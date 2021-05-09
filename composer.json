@@ -1,0 +1,82 @@
+{
+    "name": "amansrivastava/drupal9-starter",
+    "description": "D9 starter template for creating a Drupal 9 project.",
+    "type": "project",
+    "require": {
+        "php": ">=7.3",
+        "composer/installers": "^1.9",
+        "drupal/core-composer-scaffold": "^9.1",
+        "drupal/core-recommended": "^9.1",
+        "cweagans/composer-patches": "^1.7",
+        "acquia/blt": "^12",
+        "drupal/token": "^1.7",
+        "drupal/pathauto": "^1.8",
+        "drupal/field_group": "^3.1"
+    },
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Aman Srivastava",
+            "email": "aman.srivastava@live.com"
+        }
+    ],
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        "asset-packagist": {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "scripts": {
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ]
+    },
+    "extra": {
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "docroot/"
+            }
+        },
+        "installer-paths": {
+            "docroot/core": ["type:drupal-core"],
+            "docroot/libraries/{$name}": [
+                "type:drupal-library",
+                "type:bower-asset",
+                "type:npm-asset"
+            ],
+            "docroot/modules/contrib/{$name}": ["type:drupal-module"],
+            "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
+        },
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "patches": {
+        }
+    },
+    "require-dev": {
+        "drupal/devel": "^4.0"
+    }
+}

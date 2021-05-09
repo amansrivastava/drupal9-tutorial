@@ -1,0 +1,17 @@
+project:
+  machine_name: d9-starter
+  human_name: Drupal9 Starter
+  profile:
+    name: standard
+drupal:
+  site:
+    mail: test@example.com
+  account:
+    name: admin
+    mail: test@example.com
+  db:
+    database: drupal9
+    username: drupal9
+    password: drupal9
+    host: database
+    port: 3306
